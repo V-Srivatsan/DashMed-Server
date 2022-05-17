@@ -47,7 +47,7 @@ class RemoveItemForm(forms.Form):
     item_id = forms.CharField(validators=Validators.UID)
 
 
-class UpdatePasswordForm(forms.Form):
+class PasswordForm(forms.Form):
     uid = forms.CharField(validators=Validators.UID)
     password = forms.CharField(validators=Validators.PASSWORD)
 

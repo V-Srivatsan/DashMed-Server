@@ -312,8 +312,29 @@ def removeItem(req: dict):
 
 # Password
 
+def checkPassword(req: dict):
+    valid, data = getData(req, PasswordForm)
+    if not valid:
+        return data
+
+    warehouse, res = _getWarehouse(data['uid'])
+    if res != None:
+        return res
+
+    if not warehouse.check_password(data['password']):
+        return {
+            'valid': False,
+            'message': Messages.INCORRECT_PASSWORD
+        }
+        
+    return {
+        'valid': True,
+        'message': None,
+    }
+
+
 def updatePassword(req: dict):
-    valid, data = getData(req, UpdatePasswordForm)
+    valid, data = getData(req, PasswordForm)
     if not valid:
         return data
         

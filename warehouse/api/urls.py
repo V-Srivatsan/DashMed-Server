@@ -88,6 +88,11 @@ def removeItem(req):
 
 
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def checkPassword(req):
+    return Response(logic)
+
 @api_view(['PUT'])
 @permission_classes([AllowAny])
 def updatePassword(req):
@@ -112,5 +117,6 @@ urlpatterns = [
     path('add-item/', addItem),
     path('update-item/', updateItem),
     path('remove-item/', removeItem),
+    path('check-password/', checkPassword),
     path('update-password/', updatePassword),
 ]
