@@ -1,0 +1,1 @@
+web: gunicorn DashMed.wsgi --log-file -
