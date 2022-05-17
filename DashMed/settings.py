@@ -109,10 +109,6 @@ import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
-GDAL_LIBRARY_PATH = '/app/.heroku/vendor/lib/libgdal.so'
-GEOS_LIBRARY_PATH = '/app/.heroku/vendor/lib/libgeos_c.so'
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
