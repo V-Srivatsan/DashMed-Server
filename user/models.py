@@ -1,8 +1,9 @@
-from datetime import datetime
+from django import timezone
 from django.db import models
 from django.contrib.postgres.fields import ArrayField, HStoreField
 from django.contrib.gis.db.models.fields import PointField
 from django.contrib.auth.hashers import make_password, check_password as dj_check
+
 
 from misc.models import BaseModel
 from warehouse.models import Employee
@@ -44,7 +45,7 @@ class Order(BaseModel):
         size=20
     )
     coords = PointField()
-    order_date = models.DateField(default=datetime.today().date())
+    order_date = models.DateField(default=timezone.now().date())
     address = models.CharField(max_length=150)
     status = models.CharField(max_length=1, choices=OPTIONS, default='P')
 
