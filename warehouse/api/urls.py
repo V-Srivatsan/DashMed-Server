@@ -91,7 +91,7 @@ def removeItem(req):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def checkPassword(req):
-    return Response(logic)
+    return Response(logic.checkPassword(req.GET))
 
 @api_view(['PUT'])
 @permission_classes([AllowAny])
