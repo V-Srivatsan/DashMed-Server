@@ -74,7 +74,7 @@ class Validators:
 
 
 class Messages:
-    INVALID_USERNAME = 'Authentication failed! Please logout and login again!'
+    INVALID_USERNAME = 'This username does not exist! Please check your credentials!'
     USERNAME_TAKEN = 'This username is already taken! Try another!'
     INCORRECT_PASSWORD = 'The password is incorrect! Please try again!'
     INVALID_DATA = 'This action was not valid! Please try again!'
