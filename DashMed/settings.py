@@ -96,14 +96,13 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'dashmed',
-        'USER': 'vatsan',
-        'PASSWORD': 'main',
-        'HOST': 'localhost',
+        'NAME': 'd6r8n8bggip8dc',
+        'USER': 'snimznwjrwpryu',
+        'PASSWORD': '8790f0b2f4062d787ba1a02260d5cba44a68b6b0a5070b6e70a289fa05c531e6',
+        'HOST': 'ec2-54-86-224-85.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
-
 
 
 
