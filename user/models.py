@@ -1,4 +1,4 @@
-from django import timezone
+from django.utils import timezone
 from django.db import models
 from django.contrib.postgres.fields import ArrayField, HStoreField
 from django.contrib.gis.db.models.fields import PointField
