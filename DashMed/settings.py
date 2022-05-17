@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*(e$6&j_0(1%2h!2vj@-@9^3h86vp81c_n*4fim*oez2fa9xib'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,6 +86,14 @@ WSGI_APPLICATION = 'DashMed.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
+    #     'NAME': 'dashmed',
+    #     'USER': 'vatsan',
+    #     'PASSWORD': 'main',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432'
+    # }
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'dashmed',
@@ -95,6 +103,8 @@ DATABASES = {
         'PORT': '5432'
     }
 }
+
+
 
 
 # Password validation
