@@ -13,13 +13,18 @@ def addWarehouse(
     address: str,
     coords: tuple
 ):
-    Warehouse(
-        username=username,
-        password=password,
-        name=name,
-        address=address,
-        coords=Point(coords[1], coords[0])
-    ).save()
+    try:
+        warehouse = Warehouse(
+            username=username,
+            password=password,
+            name=name,
+            address=address,
+            coords=Point(coords[1], coords[0])
+        )
+        warehouse.save()
+        return warehouse.id.hex
+    except Exception:
+        return False
 
 
 def addMedicine(
@@ -29,13 +34,15 @@ def addMedicine(
     expiration: int,
     cost: float
 ):
-    Medicine(
+    med = Medicine(
         name=name,
         description=description,
         composition=composition,
         expiration=expiration,
         cost=cost
-    ).save()
+    )
+    med.save()
+    return med.id.hex
 
 
 
@@ -75,10 +82,12 @@ class Validators:
 
 class Messages:
     INVALID_USERNAME = 'This username does not exist! Please check your credentials!'
-    USERNAME_TAKEN = 'This username is already taken! Try another!'
     INCORRECT_PASSWORD = 'The password is incorrect! Please try again!'
+    USERNAME_TAKEN = 'This username is already taken! Try another!'
+
     INVALID_DATA = 'This action was not valid! Please try again!'
     ORDER_NOT_FOUND = 'The order was not found! Please try again!'
-    AUTH_ERROR = 'Authentication failed! Please logout and login again!'
-    EMP_ERROR = 'Employee not found! Please try again!'
 
+    AUTH_ERROR = 'Authentication failed! Please try reinstalling the app!'
+    EMP_ERROR = 'Employee not found! Please try again!'
+    USER_ERROR = 'User was not found! Please try again!'
