@@ -77,6 +77,7 @@ urlpatterns = [
     path('login/', login),
     path('order/', order),
     path('update/', updateProfile),
+    path('delete/', deleteProfile),
     path('get-order-count/', getOrderCounts),
     path('get-orders/', getOrders),
     path('get-order/', getOrder),
