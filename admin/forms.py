@@ -28,7 +28,7 @@ class AddWarehouseForm(forms.Form):
     username = forms.CharField(max_length=15)
     password = forms.CharField(validators=Validators.PASSWORD)
     name = forms.CharField(max_length=30)
-    address = forms.CharField(150)
+    address = forms.CharField(max_length=150)
     lat = forms.FloatField()
     long = forms.FloatField()
 
@@ -36,7 +36,7 @@ class UpdateWarehouseForm(forms.Form):
     uid = forms.CharField(validators=Validators.UID)
     warehouse_id = forms.CharField(validators=Validators.UID)
     name = forms.CharField(max_length=30)
-    address = forms.CharField(150)
+    address = forms.CharField(max_length=150)
     lat = forms.FloatField()
     long = forms.FloatField()
 
