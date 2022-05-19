@@ -21,5 +21,5 @@ urlpatterns = [
     path('users/', include('user.urls')),
     path('warehouse/', include('warehouse.urls')),
     path('employee/', include('employee.urls')),
-    path('admin/', include('admin.urls')),
+    path('admin/', include('dba.urls')),
 ]

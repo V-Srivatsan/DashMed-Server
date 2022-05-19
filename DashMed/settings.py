@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # CUSTOM APPS
-    'admin',
+    'dba',
     'user',
     'warehouse',
     'employee',
