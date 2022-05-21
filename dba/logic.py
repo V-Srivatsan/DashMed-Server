@@ -105,7 +105,7 @@ def getWarehouses(req: dict):
     if not valid:
         return data
     
-    if not _isAdmin(data['admin']):
+    if not _isAdmin(data['uid']):
         return ADMIN_NOT_FOUND
     
     return {
@@ -139,10 +139,7 @@ def setupWarehouse(req: dict):
             'message': Messages.INVALID_USERNAME
         }
     
-    return { 
-        'valid': True,
-        'UID': id
-    }
+    return { 'valid': True }
 
 
 def updateWarehouse(req: dict):
@@ -192,6 +189,7 @@ def getMedicines(req: dict):
             'composition': medicine.composition,
             'expiration': medicine.expiration,
             'cost': medicine.cost,
+            'searchable': medicine.searchable,
         } for medicine in Medicine.objects.all()]
     }
 
@@ -228,6 +226,8 @@ def updateMedicine(req: dict):
     
     if not _isAdmin(data['uid']):
         return ADMIN_NOT_FOUND
+
+    print(data['med_id'])
 
     composition = req.get('composition', [])
     if len(composition) == 0:
@@ -273,5 +273,13 @@ def updatePassword(req: dict):
     if not valid:
         return data
 
-    Admin.objects.filter(id=uuid.UUID(data['uid'])).update(password=data['password'])
+    admins = Admin.objects.filter(id=uuid.UUID(data['uid']))
+    if len(admins) == 0:
+        return {
+            'valid': False,
+            'message': Messages.AUTH_ERROR
+        }
+
+    admins[0].password = data['password']
+    admins[0].save()
     return { 'valid': True }

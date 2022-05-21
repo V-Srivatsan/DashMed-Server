@@ -63,7 +63,7 @@ class UpdateMedicineForm(forms.Form):
     description = forms.CharField(max_length=500)
     expiration = forms.IntegerField()
     cost = forms.FloatField()
-    searchable = forms.BooleanField()
+    searchable = forms.BooleanField(required=False)
 
 
 
