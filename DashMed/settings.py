@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*(e$6&j_0(1%2h!2vj@-@9^3h86vp81c_n*4fim*oez2fa9xib'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,27 +86,27 @@ WSGI_APPLICATION = 'DashMed.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'dashmed',
-        'USER': 'vatsan',
-        'PASSWORD': 'main',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
     # 'default': {
     #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
-    #     'NAME': 'd6r8n8bggip8dc',
-    #     'USER': 'snimznwjrwpryu',
-    #     'PASSWORD': '8790f0b2f4062d787ba1a02260d5cba44a68b6b0a5070b6e70a289fa05c531e6',
-    #     'HOST': 'ec2-54-86-224-85.compute-1.amazonaws.com',
+    #     'NAME': 'dashmed',
+    #     'USER': 'vatsan',
+    #     'PASSWORD': 'main',
+    #     'HOST': 'localhost',
     #     'PORT': '5432'
     # }
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'd6r8n8bggip8dc',
+        'USER': 'snimznwjrwpryu',
+        'PASSWORD': '8790f0b2f4062d787ba1a02260d5cba44a68b6b0a5070b6e70a289fa05c531e6',
+        'HOST': 'ec2-54-86-224-85.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
 }
 
-# import dj_database_url
+import dj_database_url
 
-# DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 
