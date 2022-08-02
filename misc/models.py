@@ -19,6 +19,7 @@ class Medicine(BaseModel):
     )
     expiration = models.IntegerField() # IN MONTHS
     cost = models.FloatField()
+    min_quantity = models.IntegerField(default=100)
     searchable = models.BooleanField(default=True)
 
     def __str__(self) -> str:

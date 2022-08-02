@@ -10,6 +10,7 @@ class Warehouse(BaseModel):
     username = models.CharField(max_length=15, unique=True)
     password = models.CharField(max_length=88)
     name = models.CharField(max_length=30)
+    email = models.EmailField(null=True)
     address = models.CharField(max_length=150)
     coords = PointField()
 

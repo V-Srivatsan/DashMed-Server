@@ -10,6 +10,7 @@ def addWarehouse(
     username: str,
     password: str,
     name: str,
+    email: str,
     address: str,
     coords: tuple
 ):
@@ -18,6 +19,7 @@ def addWarehouse(
             username=username,
             password=password,
             name=name,
+            email=email,
             address=address,
             coords=Point(coords[1], coords[0])
         )
@@ -32,14 +34,16 @@ def addMedicine(
     description: str,
     composition: list,
     expiration: int,
-    cost: float
+    cost: float,
+    min_quantity: int
 ):
     med = Medicine(
         name=name,
         description=description,
         composition=composition,
         expiration=expiration,
-        cost=cost
+        cost=cost,
+        min_quantity=min_quantity,
     )
     med.save()
     return med.id.hex

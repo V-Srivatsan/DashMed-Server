@@ -113,6 +113,7 @@ def getWarehouses(req: dict):
         'warehouses': [{
             'uid': warehouse.id.hex,
             'name': warehouse.name,
+            'email': warehouse.email,
             'address': warehouse.address,
             'lat': warehouse.coords.tuple[1],
             'long': warehouse.coords.tuple[0],
@@ -130,7 +131,8 @@ def setupWarehouse(req: dict):
 
     id = utils.addWarehouse(
         data['username'], data['password'], 
-        data['name'], data['address'], (data['lat'], data['long'])
+        data['name'], data['email'], data['address'], 
+        (data['lat'], data['long'])
     )
 
     if not id:
@@ -152,6 +154,7 @@ def updateWarehouse(req: dict):
     
     Warehouse.objects.filter(id=uuid.UUID(data['warehouse_id'])).update(
         name=data['name'],
+        email=data['email'],
         address=data['address'],
         coords=Point(data['long'], data['lat'])
     )
@@ -189,6 +192,7 @@ def getMedicines(req: dict):
             'composition': medicine.composition,
             'expiration': medicine.expiration,
             'cost': medicine.cost,
+            'min_quantity': medicine.min_quantity,
             'searchable': medicine.searchable,
         } for medicine in Medicine.objects.all()]
     }
@@ -211,7 +215,7 @@ def addMedicine(req: dict):
 
     id = utils.addMedicine(
         data['name'], data['description'], composition,
-        data['expiration'], data['cost']
+        data['expiration'], data['cost'], data['min_quantity']
     )
     return {
         'valid': True,
@@ -242,6 +246,7 @@ def updateMedicine(req: dict):
         composition=composition,
         expiration=data['expiration'],
         cost=data['cost'],
+        min_quantity=data['min_quantity'],
         searchable=data['searchable']
     )
 

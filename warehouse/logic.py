@@ -232,6 +232,7 @@ def getInventoryItems(req: dict):
             'composition': item.medicine.composition,
             'expiration': item.medicine.expiration,
             'cost': item.medicine.cost,
+            'min_quantity': item.medicine.min_quantity,
             'manufactured': str(item.manufactured),
             'quantity': item.quantity,
         } for item in Item.objects.filter(warehouse=warehouse).order_by('medicine__name')]
@@ -341,6 +342,12 @@ def updatePassword(req: dict):
     warehouse, res = _getWarehouse(data['uid'])
     if res != None:
         return res
+
+    if warehouse.username == 'gplex':
+        return {
+            'valid': False,
+            'message': 'This action is not valid for this warehouse due to accessibility issues!'
+        }
 
     warehouse.password = data['password']
     warehouse.save()

@@ -11,6 +11,8 @@ from misc.models import Medicine
 from .models import *
 from warehouse.models import *
 
+from django.core.mail import send_mail
+
 
 
 def _getUser(uid: str) -> User:
@@ -284,7 +286,11 @@ def order(req: dict):
     for warehouse in Warehouse.objects.filter(coords__distance_lt=(point, Distance(km=5))):
         valid = True
         for i in range(len(medicines)):
-            if len(Item.objects.filter(warehouse=warehouse, medicine=medicines[i], quantity__gt=quantities[i])) == 0:
+            if len(Item.objects.filter(
+                    warehouse=warehouse,
+                    medicine=medicines[i],
+                    quantity__gte=quantities[i]
+                )) == 0:
                 valid = False
                 break
         if valid: warehouses.append(warehouse)
@@ -317,6 +323,15 @@ def order(req: dict):
         item = Item.objects.filter(warehouse=employee.warehouse, medicine=medicine).order_by('-manufactured')[0]
         item.quantity -= quantities[i]
         item.save()
+
+        if item.quantity < item.medicine.min_quantity:
+            send_mail(
+                'Alert for updating inventory',
+                f'The stock level of the item: { item.medicine.name } has reached Danger Level! Please buy more now!',
+                'dashmed.official@gmail.com',
+                [employee.warehouse.email],
+                fail_silently=False
+            )
 
     Order(
         employee=employee,

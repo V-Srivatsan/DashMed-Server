@@ -28,6 +28,7 @@ class AddWarehouseForm(forms.Form):
     username = forms.CharField(max_length=15)
     password = forms.CharField(validators=Validators.PASSWORD)
     name = forms.CharField(max_length=30)
+    email = forms.EmailField()
     address = forms.CharField(max_length=150)
     lat = forms.FloatField()
     long = forms.FloatField()
@@ -36,6 +37,7 @@ class UpdateWarehouseForm(forms.Form):
     uid = forms.CharField(validators=Validators.UID)
     warehouse_id = forms.CharField(validators=Validators.UID)
     name = forms.CharField(max_length=30)
+    email = forms.EmailField()
     address = forms.CharField(max_length=150)
     lat = forms.FloatField()
     long = forms.FloatField()
@@ -55,6 +57,7 @@ class AddMedicineForm(forms.Form):
     description = forms.CharField(max_length=500)
     expiration = forms.IntegerField()
     cost = forms.FloatField()
+    min_quantity = forms.IntegerField()
 
 class UpdateMedicineForm(forms.Form):
     uid = forms.CharField(validators=Validators.UID)
@@ -64,7 +67,7 @@ class UpdateMedicineForm(forms.Form):
     expiration = forms.IntegerField()
     cost = forms.FloatField()
     searchable = forms.BooleanField(required=False)
-
+    min_quantity = forms.IntegerField()
 
 
 class PasswordForm(forms.Form):
