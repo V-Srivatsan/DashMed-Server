@@ -96,10 +96,10 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'd6r8n8bggip8dc',
-        'USER': 'snimznwjrwpryu',
-        'PASSWORD': '8790f0b2f4062d787ba1a02260d5cba44a68b6b0a5070b6e70a289fa05c531e6',
-        'HOST': 'ec2-54-86-224-85.compute-1.amazonaws.com',
+        'NAME': 'db7elm5d0gacf7',
+        'USER': 'tdpoaiudnsvdwv',
+        'PASSWORD': '449525f6a99e96aca79fcb0b58fed9a4c44d2839caf32205caf633c0522a6607',
+        'HOST': 'ec2-3-213-228-206.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
